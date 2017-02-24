@@ -14,4 +14,20 @@ It has been generated for PHP 5.6.30 by using [PDFTron/PDFNetWrappers](https://g
 and will require `PDFNetPHP.so` PHP extension to be installed. Both the extension
 `PDFNetPHP.so` and the library `PDFNetPHP.php` files can be generated or
 re-generated following [PDFTron/PDFNetWrappers](https://github.com/PDFTron/PDFNetWrappers)
-recommendations.
+recommendations or the manual installation below.
+
+## Manual installation
+
+* `apt-get update && apt-get install -y swig cmake wget git`
+* `mkdir PDFNetPHPSetup`
+* `cd PDFNetPHPSetup && wget https://github.com/PDFTron/PDFNetWrappers/archive/master.tar.gz`
+* `tar xzvf master.tar.gz`
+* `cd PDFNetWrappers-master/PDFNetC`
+* `wget http://www.pdftron.com/downloads/PDFNetC64.tar.gz && tar xzvf PDFNetC64.tar.gz`
+* `mv PDFNetC64/Headers/ . && mv PDFNetC64/Lib/ .`
+* `cd .. && mkdir Build && cd Build`
+* `cmake -D BUILD_PDFNetPHP=ON .. && make && make install`
+
+By then you should have both `PDFNetPHP.php` and `PDFNetPHP.so` generated under `PDFNetPHPSetup/PDFNetWrappers-master/PDFNetC/Lib` and the `PDFNetPHP.so` extension
+should have been installed on your current PHP installation under a folder like
+`[...]/5.6.30/lib/php/extensions/no-debug-non-zts-20131226`.
